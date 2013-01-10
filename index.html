@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pie Menu (like Path Menu) using jquery and CSS3 by Nikesh Hayaran</title>
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/piemenu.css">
+</head>
+<body>
+	<div class='content'>
+		<h2>pmenu. a path-like menu using css3 translate</h2>
+		<div class='demo-container'>
+			<div class='input-form'>
+				<form class="form-horizontal">
+					<fieldset>
+						<div class="control-group">
+							<label class="control-label" for="s_angle">Start Angle</label>
+							<div class="controls">
+								<div class='input-append'>
+									<input type="number" class="input-small" id='s_angle' required  placeholder="Enter a Angle"  pattern="[0-9]*" value='-180'>
+									<span class="add-on">deg</span>
+								</div>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="diff_angle">Displacement Angle</label>
+							<div class="controls">
+								<div class='input-append'>
+									<input type="number" class="input-small" id='diff_angle' required  placeholder="Enter a Angle"  pattern="[0-9]*" value='180'>
+									<span class="add-on">deg</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="radius">Radius Of Circle</label>
+							<div class="controls">
+								<div class='input-append'>
+									<input type="number" class="input-small" id='radius' required  placeholder="Enter a Radius"  pattern="[0-9]*" value='100'>
+									<span class="add-on">deg</span>
+								</div>
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<div class="btn" class='btn btn-small' id='add_child'>Add Child</a></div>
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<div class="btn" class='btn btn-small' id='remove_child'>Remove Child</a></div>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+
+			<div class='demo'>
+				<p id='info'>Updated..</p>
+				<div id='outer_container' class="outer_container" >
+					<a class="menu_button" href="#" title="Toggle">
+						<span>Menu Toggle</span>
+					</a>
+					<ul class="menu_option">
+						<li><a href="#"><span>Item</span></a></li>
+						<li><a href="#"><span>Item</span></a></li>
+						<li><a href="#"><span>Item</span></a></li>
+						<li><a href="#"><span>Item</span></a></li>
+						<li><a href="#"><span>Item</span></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class='clearfix'></div>
+		</div>
+		<h5>* Please read README.md file for explanation.</h5>
+	</div>
+	<script src="js/pmenu.js"></script>
+	<script>
+	pmenu.init();
+	document.addEventListener("DOMContentLoaded", function() {
+		var add_child = document.getElementById('add_child'),
+			remove_child = document.getElementById('remove_child'),
+			s_angle = document.getElementById('s_angle'),
+			diff_angle = document.getElementById('diff_angle'),
+			radius = document.getElementById('radius');
+		s_angle.onchange = function() {
+			pmenu.startingAngle = this.value;
+			pmenu.open();
+		}
+		diff_angle.onchange = function() {
+			pmenu.angleDifference = this.value;
+			pmenu.open();
+		}
+		radius.onchange = function() {
+			pmenu.radius = this.value;
+			pmenu.open();
+		}
+		add_child.onclick = function() {
+			var item = pmenu.menu.children[0];
+			var style = item.getAttribute('style');
+			pmenu.menu.innerHTML += '<li><a href="#"><span>Item</span></a></li>';
+			item = pmenu.menu.children[pmenu.menu.children.length -1];
+			item.setAttribute('style', style);
+			pmenu.reinit();
+			pmenu.open();
+		}
+		remove_child.onclick = function() {
+			var item = pmenu.menu.children[pmenu.menu.children.length -1];
+			pmenu.menu.removeChild(item);
+			pmenu.reinit();
+			pmenu.open();
+		}
+	});
+	</script>
+</body>
+</html>
