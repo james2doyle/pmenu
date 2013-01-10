@@ -3,9 +3,9 @@ pmenu
 
 pmenu is a Path-like menu written in Javascript and CSS3. It uses translate3d not pos:abs top/left.
 
-Here is the (Demo)[http://james2doyle.github.com/pmenu/]
+Here is the [Demo](http://james2doyle.github.com/pmenu/)
 
-It is heavily inspired/copied by (Pie-Menu)[http://nikesh.github.com/Pie-Menu/].
+It is heavily inspired/copied by [Pie-Menu](http://nikesh.github.com/Pie-Menu/).
 
 Because of translate3d this may not work on older browsers. It also uses classList, querySelectorAll and a couple other new javascript methods. Support for these is obviously a necessity.
 
